@@ -10,19 +10,31 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username }).populate("thoughts");
     },
+    flocks: async () => {
+      return Flock.find().populate("location");
+    },
   },
 
   Mutation: {
-    addUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
+    addUser: async (
+      parent,
+      { username, firstName, lastName, email, password }
+    ) => {
+      const user = await User.create({
+        username,
+        firstName,
+        lastName,
+        email,
+        password,
+      });
       const token = signToken(user);
       return { token, user };
     },
-    login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
+    login: async (parent, { username, password }) => {
+      const user = await User.findOne({ username });
 
       if (!user) {
-        throw new AuthenticationError("No user found with this email address");
+        throw new AuthenticationError("No user found with this username");
       }
 
       const correctPw = await user.isCorrectPassword(password);
@@ -34,6 +46,39 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+    addShed: async (parent, { location }) => {
+      return await Shed.create({ location });
+    },
+    addBreed: async (parent, { name }) => {
+      return await Breed.create({ name });
+    },
+
+    addFlock: async (
+      parent,
+      {
+        startDate,
+        initialStock,
+        age,
+        femaleCount,
+        maleCount,
+        vaccinated,
+        location,
+        breed,
+        status,
+      }
+    ) => {
+      return await Flock.create({
+        startDate,
+        initialStock,
+        age,
+        femaleCount,
+        maleCount,
+        vaccinated,
+        location,
+        breed,
+        status,
+      });
     },
   },
 };

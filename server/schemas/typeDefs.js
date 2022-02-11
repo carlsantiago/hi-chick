@@ -23,19 +23,21 @@ const typeDefs = gql`
 
   type Flock {
     _id: ID
-    startDate: Date
+    startDate: String
+    initialStock: Int
     age: Int
     femaleCount: Int
     maleCount: Int
     vaccinated: Boolean
     location: Shed
     breed: [Breed]
+    status: String
   }
 
   type DailyOps {
     _id: ID
     feed: Boolean
-    temperature: Number
+    temperature: Float
   }
 
   type Auth {
@@ -46,11 +48,32 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(username: String!): User
+    flocks: [Flock]
   }
 
   type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
+    addUser(
+      firstName: String!
+      lastName: String!
+      username: String!
+      email: String!
+      password: String!
+      userType: Boolean!
+    ): Auth
     login(email: String!, password: String!): Auth
+    addFlock(
+      startDate: String!
+      initialStock: Int!
+      age: Int!
+      femaleCount: Int!
+      maleCount: Int!
+      vaccinated: Boolean
+      location: ID!
+      breed: [ID]!
+      status: String!
+    ): Flock
+    addShed(location: String!): Shed
+    addBreed(name: String!): Breed
   }
 `;
 
