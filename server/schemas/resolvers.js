@@ -16,15 +16,11 @@ const resolvers = {
   },
 
   Mutation: {
-    addUser: async (
-      parent,
-      { username, firstName, lastName, email, password }
-    ) => {
+    addUser: async (parent, { username, firstName, lastName, password }) => {
       const user = await User.create({
         username,
         firstName,
         lastName,
-        email,
         password,
       });
       const token = signToken(user);
