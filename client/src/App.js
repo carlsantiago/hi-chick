@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {
   ApolloClient,
   InMemoryCache,
@@ -8,9 +9,8 @@ import {
 import { setContext } from "@apollo/client/link/context";
 
 import Home from "./pages/Home";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-
+import Dashboard from "./pages/Dashboard";
+import { FarmProvider } from "./utils/GlobalState";
 import { Flex, CSSReset, ChakraProvider } from "@chakra-ui/react";
 
 // Construct our main GraphQL API endpoint
@@ -40,17 +40,23 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <ChakraProvider>
-        <Flex direction="column" align="center" justify="center">
-          <CSSReset />
-
-          <Header />
-          <Flex justify="center" align="center" w="100%" h="93vh">
-            <Home />
-          </Flex>
-          <Footer />
-        </Flex>
-      </ChakraProvider>
+      <Router>
+        <div>
+          <FarmProvider>
+            <ChakraProvider>
+              <Flex direction="column" align="center" justify="center">
+                <CSSReset />
+                <Flex justify="center" align="center" w="100%" h="93vh">
+                  <Switch>
+                    <Route exact path="/" component={Home} />
+                    <Route exact path="/dashboard" component={Dashboard} />
+                  </Switch>
+                </Flex>
+              </Flex>
+            </ChakraProvider>
+          </FarmProvider>
+        </div>
+      </Router>
     </ApolloProvider>
   );
 }
