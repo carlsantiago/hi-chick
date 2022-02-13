@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link as RouteLink,
+} from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
@@ -15,8 +20,8 @@ import {
 import { LockIcon, InfoIcon } from "@chakra-ui/icons";
 import Auth from "../utils/auth";
 
-const LoginForm = () => {
-  const [formState, setFormState] = useState({ email: "", password: "" });
+const LoginForm = (props) => {
+  const [formState, setFormState] = useState({ username: "", password: "" });
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
   const handleChange = (event) => {
@@ -44,7 +49,7 @@ const LoginForm = () => {
 
     // clear form values
     setFormState({
-      email: "",
+      username: "",
       password: "",
     });
   };
@@ -53,7 +58,8 @@ const LoginForm = () => {
     <div>
       {data ? (
         <p>
-          Success! You may now head <Link to="/"> back to the hompage.</Link>
+          Success! You may now head{" "}
+          <Link to="/dashboard"> back to the hompage.</Link>
         </p>
       ) : (
         <form action="submit" onSubmit={handleFormSubmit}>
@@ -63,10 +69,12 @@ const LoginForm = () => {
                 <InputLeftElement children={<InfoIcon />} />
                 <Input
                   variant="outline"
-                  type="name"
+                  type="text"
+                  name="username"
                   placeholder="Username"
                   aria-label="Username"
                   bg="white"
+                  value={formState.username}
                   onChange={handleChange}
                 />
               </InputGroup>
@@ -75,10 +83,12 @@ const LoginForm = () => {
               <InputGroup>
                 <InputLeftElement children={<LockIcon />} />
                 <Input
+                  name="password"
                   type="password"
                   placeholder="Password"
                   aria-label="Password"
                   bg="white"
+                  value={formState.password}
                   onChange={handleChange}
                 />
               </InputGroup>

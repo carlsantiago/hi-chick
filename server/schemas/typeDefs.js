@@ -55,11 +55,11 @@ const typeDefs = gql`
       firstName: String!
       lastName: String!
       username: String!
-      email: String!
       password: String!
       userType: Boolean!
     ): Auth
-    login(email: String!, password: String!): Auth
+
+    login(username: String!, password: String!): Auth
     addFlock(
       startDate: String!
       initialStock: Int!

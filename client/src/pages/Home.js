@@ -16,7 +16,7 @@ const Home = () => {
       p="3"
       boxShadow="sm"
       rounded="lg"
-      overFlow="hidden"
+      overflow="hidden"
     >
       <Image src="./HiChickHD.png" w="250px" mx="auto" my="6" />
       <LoginForm />
