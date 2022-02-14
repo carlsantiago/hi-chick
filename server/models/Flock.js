@@ -24,7 +24,7 @@ const flockSchema = new Schema({
   vaccinated: {
     type: Boolean,
   },
-  location: {
+  shed: {
     type: Schema.Types.ObjectId,
     ref: "Shed",
     required: true,

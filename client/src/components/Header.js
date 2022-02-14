@@ -13,7 +13,7 @@ const Header = () => {
   console.log(Auth.getProfile().data);
   return (
     <Stack>
-      <Box w="250px" pos="absolute" top="40px" right="40px">
+      <Box w="200px" pos="absolute" top="40px" right="20px">
         <Text fontSize="xl">
           <Moment format="h:mm a">{now}</Moment>
           <br />

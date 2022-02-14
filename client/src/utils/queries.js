@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const QUERY_USER = gql`
   query user($username: String!) {
@@ -11,6 +11,27 @@ export const QUERY_USER = gql`
         thoughtText
         createdAt
       }
+    }
+  }
+`;
+
+export const QUERY_FLOCKS = gql`
+  query getFlocks {
+    flocks {
+      shed {
+        _id
+        location
+      }
+      breed {
+        _id
+        name
+      }
+      initialStock
+      age
+      femaleCount
+      maleCount
+      vaccinated
+      status
     }
   }
 `;

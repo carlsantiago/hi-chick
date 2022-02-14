@@ -11,7 +11,13 @@ const resolvers = {
       return User.findOne({ username }).populate("thoughts");
     },
     flocks: async () => {
-      return Flock.find().populate("location");
+      return Flock.find().populate("shed").populate("breed");
+    },
+    shed: async () => {
+      return Shed.find();
+    },
+    breed: async () => {
+      return Breed.find();
     },
   },
 
@@ -63,7 +69,7 @@ const resolvers = {
         femaleCount,
         maleCount,
         vaccinated,
-        location,
+        shed,
         breed,
         status,
       }
@@ -75,7 +81,7 @@ const resolvers = {
         femaleCount,
         maleCount,
         vaccinated,
-        location,
+        shed,
         breed,
         status,
       });

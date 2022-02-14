@@ -28,8 +28,8 @@ const typeDefs = gql`
     femaleCount: Int
     maleCount: Int
     vaccinated: Boolean
-    location: Shed
-    breed: [Breed]
+    shed: Shed
+    breed: Breed
     status: String
   }
 
@@ -48,6 +48,8 @@ const typeDefs = gql`
     users: [User]
     user(username: String!): User
     flocks: [Flock]
+    shed: [Shed]
+    breed: [Breed]
   }
 
   type Mutation {
@@ -60,6 +62,7 @@ const typeDefs = gql`
     ): Auth
 
     login(username: String!, password: String!): Auth
+
     addFlock(
       startDate: String!
       initialStock: Int!
@@ -67,8 +70,8 @@ const typeDefs = gql`
       femaleCount: Int!
       maleCount: Int!
       vaccinated: Boolean
-      location: ID!
-      breed: [ID]!
+      shed: ID!
+      breed: ID!
       status: String!
     ): Flock
     addShed(location: String!): Shed

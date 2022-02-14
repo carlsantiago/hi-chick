@@ -10,6 +10,7 @@ import { setContext } from "@apollo/client/link/context";
 
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
+import Overview from "./pages/Overview";
 import { FarmProvider } from "./utils/GlobalState";
 import { Flex, CSSReset, ChakraProvider } from "@chakra-ui/react";
 
@@ -50,6 +51,7 @@ function App() {
                   <Switch>
                     <Route exact path="/" component={Home} />
                     <Route exact path="/dashboard" component={Dashboard} />
+                    <Route exact path="/overview" component={Overview} />
                   </Switch>
                 </Flex>
               </Flex>
