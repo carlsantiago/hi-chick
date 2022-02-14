@@ -2,13 +2,12 @@ import React from "react";
 import Auth from "../utils/auth";
 import LoginForm from "../components/LoginForm";
 import { Box, Image } from "@chakra-ui/react";
+import { Redirect } from "react-router-dom";
 
 const Home = () => {
-  const logout = (event) => {
-    event.preventDefault();
-    Auth.logout();
-  };
-
+  if (Auth.loggedIn()) {
+    return <Redirect to="/Dashboard" />;
+  }
   return (
     <Box
       bg="gray.300"
