@@ -21,11 +21,11 @@ import {
 } from "@chakra-ui/react";
 import { QUERY_FLOCKS } from "../utils/queries";
 import { useQuery } from "@apollo/client";
+import { postDb } from "../utils/indexedDB";
 
 const DataEntry = () => {
   const { loading, data } = useQuery(QUERY_FLOCKS);
   console.log(data);
-  const flocks = data?.flocks || [];
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -52,7 +52,7 @@ const DataEntry = () => {
                     </ModalBody>
 
                     <ModalFooter>
-                      <Button colorScheme="blue" mr={3}>
+                      <Button colorScheme="blue" mr={3} type="submit">
                         Save
                       </Button>
                       <Button onClick={onClose}>Cancel</Button>
