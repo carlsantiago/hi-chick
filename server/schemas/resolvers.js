@@ -1,8 +1,26 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { User, Shed, Breed, Flock } = require("../models");
 const { signToken } = require("../utils/auth");
+const { Kind, GraphQLScalarType } = require("graphql");
 
 const resolvers = {
+  Date: new GraphQLScalarType({
+    name: "Date",
+    description: "Date custom scalar type",
+    parseValue(value) {
+      return new Date(value); // value from the client
+    },
+    serialize(value) {
+      return value.getTime(); // value sent to the client
+    },
+    parseLiteral(ast) {
+      if (ast.kind === Kind.INT) {
+        return new Date(+ast.value); // ast value is always in string format
+      }
+      return null;
+    },
+  }),
+
   Query: {
     users: async () => {
       return User.find().populate("thoughts");
@@ -65,6 +83,7 @@ const resolvers = {
       {
         startDate,
         initialStock,
+        currentStock,
         age,
         femaleCount,
         maleCount,
@@ -77,6 +96,7 @@ const resolvers = {
       return await Flock.create({
         startDate,
         initialStock,
+        currentStock,
         age,
         femaleCount,
         maleCount,

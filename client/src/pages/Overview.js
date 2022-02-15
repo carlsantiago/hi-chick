@@ -14,48 +14,40 @@ import {
 } from "@chakra-ui/react";
 import { useQuery } from "@apollo/client";
 import { QUERY_FLOCKS } from "../utils/queries";
+import FlockList from "../components/FlockList";
 
 const Overview = () => {
   const { loading, data } = useQuery(QUERY_FLOCKS);
   console.log(data);
+  const flocks = data?.flocks || [];
+
   if (Auth.loggedIn()) {
     return (
       <div>
         <Header />
-        <Table variant="striped" colorScheme="teal">
-          <TableCaption>Imperial to metric conversion factors</TableCaption>
-          <Thead>
-            <Tr>
-              <Th>Shed</Th>
-              <Th>Breed</Th>
-              <Th isNumeric>multiply by</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            <Tr>
-              <Td>inches</Td>
-              <Td>millimetres (mm)</Td>
-              <Td isNumeric>25.4</Td>
-            </Tr>
-            <Tr>
-              <Td>feet</Td>
-              <Td>centimetres (cm)</Td>
-              <Td isNumeric>30.48</Td>
-            </Tr>
-            <Tr>
-              <Td>yards</Td>
-              <Td>metres (m)</Td>
-              <Td isNumeric>0.91444</Td>
-            </Tr>
-          </Tbody>
-          <Tfoot>
-            <Tr>
-              <Th>To convert</Th>
-              <Th>into</Th>
-              <Th isNumeric>multiply by</Th>
-            </Tr>
-          </Tfoot>
-        </Table>
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <Table variant="striped" colorScheme="teal">
+            <TableCaption>Farm Overview</TableCaption>
+            <Thead>
+              <Tr>
+                <Th>Shed</Th>
+                <Th>Breed</Th>
+                <Th isNumeric>Age</Th>
+                <Th isNumeric>Initial Stock</Th>
+                <Th isNumeric>Current Stock</Th>
+                <Th isNumeric>Females</Th>
+                <Th isNumeric>Males</Th>
+                <Th>Vaccinated</Th>
+                <Th>Status</Th>
+              </Tr>
+            </Thead>
+            <FlockList flocks={flocks} />
+
+            <Tfoot></Tfoot>
+          </Table>
+        )}
       </div>
     );
   } else {

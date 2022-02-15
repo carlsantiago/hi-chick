@@ -1,6 +1,8 @@
 const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
+  scalar Date
+
   type User {
     _id: ID
     firstName: String
@@ -22,8 +24,9 @@ const typeDefs = gql`
 
   type Flock {
     _id: ID
-    startDate: String
+    startDate: Date
     initialStock: Int
+    currentStock: Int
     age: Int
     femaleCount: Int
     maleCount: Int
@@ -64,8 +67,9 @@ const typeDefs = gql`
     login(username: String!, password: String!): Auth
 
     addFlock(
-      startDate: String!
+      startDate: Date
       initialStock: Int!
+      currentStock: Int!
       age: Int!
       femaleCount: Int!
       maleCount: Int!

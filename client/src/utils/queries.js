@@ -18,6 +18,7 @@ export const QUERY_USER = gql`
 export const QUERY_FLOCKS = gql`
   query getFlocks {
     flocks {
+      _id
       shed {
         _id
         location
@@ -27,6 +28,7 @@ export const QUERY_FLOCKS = gql`
         name
       }
       initialStock
+      currentStock
       age
       femaleCount
       maleCount

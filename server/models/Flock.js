@@ -3,9 +3,13 @@ const { Schema, model } = require("mongoose");
 const flockSchema = new Schema({
   startDate: {
     type: Date,
-    required: true,
+    default: Date.now,
   },
   initialStock: {
+    type: Number,
+    required: true,
+  },
+  currentStock: {
     type: Number,
     required: true,
   },
