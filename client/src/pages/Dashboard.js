@@ -3,12 +3,7 @@ import { Box, Image, Text, Center, HStack } from "@chakra-ui/react";
 import Header from "../components/Header";
 import { Redirect } from "react-router-dom";
 import Auth from "../utils/auth";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link as RouteLink,
-} from "react-router-dom";
+import { Link as RouteLink } from "react-router-dom";
 
 const Dashboard = () => {
   if (Auth.loggedIn()) {
@@ -47,7 +42,7 @@ const Dashboard = () => {
               </Box>
             </Box>
           </RouteLink>
-          <RouteLink to="/data">
+          <RouteLink to="/dataentry">
             <Box
               w="250px"
               borderWidth="1px"

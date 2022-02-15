@@ -10,7 +10,6 @@ const Header = () => {
   };
   const now = new Date();
 
-  console.log(Auth.getProfile().data);
   return (
     <Stack>
       <Box w="200px" pos="absolute" top="40px" right="20px">

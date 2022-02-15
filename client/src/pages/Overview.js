@@ -2,16 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 import { Redirect } from "react-router-dom";
 import Auth from "../utils/auth";
-import {
-  Table,
-  Thead,
-  Tbody,
-  Tfoot,
-  Tr,
-  Th,
-  Td,
-  TableCaption,
-} from "@chakra-ui/react";
+import { Table, Thead, Tfoot, Tr, Th, TableCaption } from "@chakra-ui/react";
 import { useQuery } from "@apollo/client";
 import { QUERY_FLOCKS } from "../utils/queries";
 import FlockList from "../components/FlockList";
