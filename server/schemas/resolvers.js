@@ -37,6 +37,9 @@ const resolvers = {
     breed: async () => {
       return Breed.find();
     },
+    location: async (parent, _id) => {
+      return await Shed.findById(_id);
+    },
   },
 
   Mutation: {

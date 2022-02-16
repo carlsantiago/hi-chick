@@ -1,20 +1,24 @@
-import { React, useState } from "react";
-
+import { React, useState, useEffect } from "react";
 import { getAlldb } from "../utils/indexedDB";
-
+import { QUERY_SHED } from "../utils/queries";
+import { useQuery } from "@apollo/client";
 import { Tbody, Td, Tr } from "@chakra-ui/react";
+
 const Events = () => {
   const [eventsArr, setArray] = useState([]);
 
-  const fetchDb = async () => {
-    const result = await getAlldb();
-    let tempArr = [];
-    for (let data of result) {
-      tempArr.push(data);
+  useEffect(() => {
+    async function fetchData() {
+      const result = await getAlldb();
+      let tempArr = [];
+      for (let data of result) {
+        tempArr.push(data);
+      }
+      setArray(tempArr);
     }
-    setArray(tempArr);
-  };
-  fetchDb();
+    fetchData();
+  }, []);
+
   return (
     <Tbody>
       {eventsArr &&

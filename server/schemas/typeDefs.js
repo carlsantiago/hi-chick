@@ -53,6 +53,7 @@ const typeDefs = gql`
     flocks: [Flock]
     shed: [Shed]
     breed: [Breed]
+    location(_id: ID!): Shed
   }
 
   type Mutation {

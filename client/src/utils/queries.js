@@ -37,3 +37,12 @@ export const QUERY_FLOCKS = gql`
     }
   }
 `;
+
+export const QUERY_SHED = gql`
+  query getShed($location: [ID]!) {
+    shed(_id: $location) {
+      _id
+      location
+    }
+  }
+`;

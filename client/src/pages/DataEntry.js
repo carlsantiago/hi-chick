@@ -45,7 +45,7 @@ const DataEntry = () => {
               <TableCaption>Saved events</TableCaption>
               <Thead>
                 <Tr>
-                  <Th>Shed</Th>
+                  <Th>Location</Th>
                   <Th>Breed</Th>
                   <Th>Eggs Collected</Th>
                   <Th>Female Morts</Th>
