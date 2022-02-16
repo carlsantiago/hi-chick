@@ -29,9 +29,8 @@ import { postDb } from "../utils/indexedDB";
 
 const DailyOps = () => {
   const { loading, data } = useQuery(QUERY_FLOCKS);
-  console.log(data);
   const flocks = data?.flocks || [];
-
+  console.log(flocks);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const formik = useFormik({
@@ -47,11 +46,11 @@ const DailyOps = () => {
       } else {
         onClose();
       }
+      postDb(values);
       console.log(values);
     },
   });
 
-  console.log(formik.errors);
   return (
     <>
       <Button onClick={onOpen}>Daily Operations</Button>

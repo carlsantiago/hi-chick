@@ -13,14 +13,23 @@ const initdb = async () => {
   });
 };
 
-export const postDB = async (content) => {
+export const postDb = async (content) => {
   console.log("Post to the indexedDB");
   const eventsDb = await openDB("events", 1);
   const tx = eventsDb.transaction("events", "readwrite");
   const store = tx.objectStore("events");
   const request = store.add({ event: content });
   const result = await request;
-  console.log("🚀 - data saved to the database", result);
+  console.log("🚀 - data saved to IndexedDB", result);
 };
 
+export const getAlldb = async () => {
+  console.log("GET all from IndexedDB");
+  const eventsDb = await openDB("events", 1);
+  const tx = eventsDb.transaction("events", "readonly");
+  const store = tx.objectStore("events");
+  const request = store.getAll();
+  const result = await request;
+  return result;
+};
 initdb();
