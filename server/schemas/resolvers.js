@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Shed, Breed, Flock } = require("../models");
+const { User, Shed, Breed, Flock, DailyOps } = require("../models");
 const { signToken } = require("../utils/auth");
 const { Kind, GraphQLScalarType } = require("graphql");
 
@@ -77,12 +77,12 @@ const resolvers = {
 
       return { token, user };
     },
-    addShed: async (parent, { location }) => {
-      return await Shed.create({ location });
-    },
-    addBreed: async (parent, { name }) => {
-      return await Breed.create({ name });
-    },
+    // addShed: async (parent, { location }) => {
+    //   return await Shed.create({ location });
+    // },
+    // addBreed: async (parent, { name }) => {
+    //   return await Breed.create({ name });
+    // },
 
     addFlock: async (
       parent,
@@ -110,6 +110,19 @@ const resolvers = {
         shed,
         breed,
         status,
+      });
+    },
+
+    addDailyOps: async (
+      parent,
+      { date, flock, femaleMorts, maleMorts, eggsCollected }
+    ) => {
+      return await DailyOps.create({
+        date,
+        flockId,
+        femaleMorts,
+        maleMorts,
+        eggsCollected,
       });
     },
   },

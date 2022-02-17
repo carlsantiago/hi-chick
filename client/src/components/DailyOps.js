@@ -46,7 +46,9 @@ const DailyOps = () => {
       } else {
         onClose();
       }
+
       postDb(values);
+      window.location.reload();
       console.log(values);
     },
   });
@@ -65,7 +67,7 @@ const DailyOps = () => {
             <ModalBody pb={6}>
               <form onSubmit={formik.handleSubmit}>
                 <FormControl isRequired>
-                  <FormLabel htmlFor="flock"> Flock </FormLabel>
+                  <FormLabel htmlFor="flock">Flock</FormLabel>
                   <Select
                     id="flock"
                     name="flock"
@@ -76,7 +78,11 @@ const DailyOps = () => {
                   >
                     {flocks &&
                       flocks.map((flock) => (
-                        <option value={flock._id} key={flock._id}>
+                        <option
+                          value={flock._id}
+                          data-id={flock._id}
+                          key={flock._id}
+                        >
                           {flock.shed.location} - {flock.breed.name}
                         </option>
                       ))}

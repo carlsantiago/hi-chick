@@ -38,8 +38,11 @@ const typeDefs = gql`
 
   type DailyOps {
     _id: ID
-    feed: Boolean
-    temperature: Float
+    date: Date
+    flockId: Flock
+    femaleMorts: Int
+    maleMorts: Int
+    eggsCollected: Int
   }
 
   type Auth {
@@ -68,6 +71,14 @@ const typeDefs = gql`
 
     login(username: String!, password: String!): Auth
 
+    addDailyOps(
+      date: Date
+      flockId: ID
+      femaleMorts: Int
+      maleMorts: Int
+      eggsCollected: Int
+    ): DailyOps
+
     addFlock(
       startDate: Date
       initialStock: Int!
@@ -80,8 +91,6 @@ const typeDefs = gql`
       breed: ID!
       status: String!
     ): Flock
-    addShed(location: String!): Shed
-    addBreed(name: String!): Breed
   }
 `;
 
