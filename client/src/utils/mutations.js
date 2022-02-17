@@ -96,3 +96,27 @@ export const ADD_BREED = gql`
     }
   }
 `;
+
+export const ADD_DAILYOPS = gql`
+  mutation addDailyOps(
+    $flockId: ID!
+    $eggsCollected: Int!
+    $femaleMorts: Int!
+    $maleMorts: Int!
+  ) {
+    addDailyOps(
+      flockId: $flockId
+      eggsCollected: $eggsCollected
+      femaleMorts: $femaleMorts
+      maleMorts: $maleMorts
+    ) {
+      _id
+      flockId {
+        _id
+      }
+      eggsCollected
+      femaleMorts
+      maleMorts
+    }
+  }
+`;

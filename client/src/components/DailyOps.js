@@ -36,7 +36,7 @@ const DailyOps = () => {
   const formik = useFormik({
     initialValues: {
       flock: "",
-      eggs: "",
+      eggsCollected: "",
       mortsFemale: "",
       mortsMale: "",
     },
@@ -92,9 +92,9 @@ const DailyOps = () => {
                 <FormLabel htmlFor="eggs"> Eggs Collected </FormLabel>
                 <NumberInput min={0}>
                   <NumberInputField
-                    id="eggs"
-                    name="eggs"
-                    value={formik.values.eggs}
+                    id="eggsCollected"
+                    name="eggsCollected"
+                    value={formik.values.eggsCollected}
                     onChange={formik.handleChange}
                   />
                   <NumberInputStepper>

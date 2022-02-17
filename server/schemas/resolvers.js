@@ -115,7 +115,7 @@ const resolvers = {
 
     addDailyOps: async (
       parent,
-      { date, flock, femaleMorts, maleMorts, eggsCollected }
+      { date, flockId, femaleMorts, maleMorts, eggsCollected }
     ) => {
       return await DailyOps.create({
         date,

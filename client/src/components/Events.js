@@ -2,13 +2,14 @@ import { React, useState, useEffect } from "react";
 import { getAlldb } from "../utils/indexedDB";
 import { QUERY_FLOCKS } from "../utils/queries";
 import { useQuery } from "@apollo/client";
+import SubmitData from "./SubmitData";
+
 import {
   Tbody,
   Td,
   Tr,
   Table,
   Thead,
-  Button,
   Th,
   TableCaption,
   Text,
@@ -49,7 +50,7 @@ const Events = () => {
       {eventsArr.length ? (
         <Table>
           <TableCaption>
-            {eventsArr.length} Pending <Button type="submit">Send</Button>
+            {eventsArr.length} Pending <SubmitData />
           </TableCaption>
           <Thead>
             <Tr>
@@ -64,7 +65,7 @@ const Events = () => {
               eventsArr.map((index) => (
                 <Tr key={index.id}>
                   <Td>{getName(index.event.flock)}</Td>
-                  <Td>{index.event.eggs}</Td>
+                  <Td>{index.event.eggsCollected}</Td>
                   <Td>{index.event.mortsMale}</Td>
                   <Td>{index.event.mortsFemale}</Td>
                 </Tr>
