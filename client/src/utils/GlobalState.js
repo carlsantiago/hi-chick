@@ -5,7 +5,9 @@ const FarmContext = createContext();
 const { Provider } = FarmContext;
 
 const FarmProvider = ({ value = [], ...props }) => {
-  const [state, dispatch] = useFarmReducer({});
+  const [state, dispatch] = useFarmReducer({
+    location: [],
+  });
 
   return <Provider value={[state, dispatch]} {...props} />;
 };

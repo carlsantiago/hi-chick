@@ -3,6 +3,8 @@ import { getAlldb } from "../utils/indexedDB";
 import { QUERY_SHED } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 import { Tbody, Td, Tr } from "@chakra-ui/react";
+import { useFarmContext } from "../utils/GlobalState";
+import { UPDATE_LOCATION } from "../utils/actions";
 
 const Events = () => {
   const [eventsArr, setArray] = useState([]);
@@ -19,11 +21,29 @@ const Events = () => {
     fetchData();
   }, []);
 
+  // const [state, dispatch] = useFarmContext();
+  // const { locationId } = state;
+  // const { loading, data } = useQuery(QUERY_SHED);
+
+  // useEffect(() => {
+  //   if (data) {
+  //     dispatch({
+  //       type: UPDATE_LOCATION,
+  //       location: data.location,
+  //     });
+  //   }
+  // }, [data, dispatch]);
+
+  // function filterLocation() {
+  //   return state.location.filter((shed) => shed.location._id === locationId);
+  // }
+
+  console.log(eventsArr);
   return (
     <Tbody>
       {eventsArr &&
         eventsArr.map((index) => (
-          <Tr>
+          <Tr key={index.id}>
             <Td>Shed</Td>
             <Td>Breed</Td>
             <Td>{index.event.eggs}</Td>

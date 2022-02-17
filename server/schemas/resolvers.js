@@ -31,6 +31,9 @@ const resolvers = {
     flocks: async () => {
       return Flock.find().populate("shed").populate("breed");
     },
+    flock: async (parent, _id) => {
+      return await Flock.findById(_id);
+    },
     shed: async () => {
       return Shed.find();
     },

@@ -51,6 +51,7 @@ const typeDefs = gql`
     users: [User]
     user(username: String!): User
     flocks: [Flock]
+    flock(_id: ID!): Flock
     shed: [Shed]
     breed: [Breed]
     location(_id: ID!): Shed
