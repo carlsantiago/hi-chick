@@ -1,10 +1,5 @@
 import { useReducer } from "react";
-import {
-  ADD_EGGS,
-  ADD_MORTS,
-  UPDATE_OVERVIEW,
-  UPDATE_LOCATION,
-} from "./actions";
+import { ADD_EGGS, ADD_MORTS, UPDATE_OVERVIEW, UPDATE_FLOCK } from "./actions";
 
 export const reducer = (state, action) => {
   switch (action.type) {
@@ -22,11 +17,6 @@ export const reducer = (state, action) => {
         ...state,
       };
 
-    case UPDATE_LOCATION:
-      return {
-        ...state,
-        location: [...action.location],
-      };
     default:
       return state;
   }

@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { getAlldb } from "../utils/indexedDB";
-import { QUERY_SHED } from "../utils/queries";
+import { QUERY_SINGLE_FLOCK } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 import { Tbody, Td, Tr } from "@chakra-ui/react";
 import { useFarmContext } from "../utils/GlobalState";
@@ -23,7 +23,7 @@ const Events = () => {
 
   // const [state, dispatch] = useFarmContext();
   // const { locationId } = state;
-  // const { loading, data } = useQuery(QUERY_SHED);
+  // const { data: flockData } = useQuery(QUERY_SINGLE_FLOCK);
 
   // useEffect(() => {
   //   if (data) {
@@ -34,23 +34,31 @@ const Events = () => {
   //   }
   // }, [data, dispatch]);
 
-  // function filterLocation() {
-  //   return state.location.filter((shed) => shed.location._id === locationId);
+  // const fetchLocation = (id) => {
+  //   dispatch({
+  //     type: UPDATE_LOCATION,
+  //     flockData: id
+  //   })
   // }
+
+  // fetchLocation("")
 
   console.log(eventsArr);
   return (
     <Tbody>
-      {eventsArr &&
+      {eventsArr.length ? (
+        eventsArr &&
         eventsArr.map((index) => (
           <Tr key={index.id}>
-            <Td>Shed</Td>
-            <Td>Breed</Td>
+            <Td>{index.event.flock}</Td>
             <Td>{index.event.eggs}</Td>
             <Td>{index.event.mortsMale}</Td>
             <Td>{index.event.mortsFemale}</Td>
           </Tr>
-        ))}
+        ))
+      ) : (
+        <h3>No events</h3>
+      )}
     </Tbody>
   );
 };

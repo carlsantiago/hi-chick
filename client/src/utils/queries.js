@@ -38,6 +38,19 @@ export const QUERY_FLOCKS = gql`
   }
 `;
 
+export const QUERY_SINGLE_FLOCK = gql`
+  query getFlock($id: ID!) {
+    flock(_id: $id) {
+      _id
+      shed {
+        location
+      }
+      breed {
+        name
+      }
+    }
+  }
+`;
 export const QUERY_SHED = gql`
   query getShed($location: [ID]!) {
     shed(_id: $location) {

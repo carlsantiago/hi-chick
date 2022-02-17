@@ -12,6 +12,7 @@ import {
   Divider,
   Table,
   Thead,
+  Button,
   Tfoot,
   Th,
   TableCaption,
@@ -42,11 +43,12 @@ const DataEntry = () => {
             </Stack>
             <Divider />
             <Table>
-              <TableCaption>Saved events</TableCaption>
+              <TableCaption>
+                Pending <Button>Send</Button>
+              </TableCaption>
               <Thead>
                 <Tr>
-                  <Th>Location</Th>
-                  <Th>Breed</Th>
+                  <Th>Flock</Th>
                   <Th>Eggs Collected</Th>
                   <Th>Female Morts</Th>
                   <Th>Male Morts</Th>
