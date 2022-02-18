@@ -102,30 +102,37 @@ const Dashboard = () => {
               </Text>
             </Box>
           </Box>
-          <Box
-            w="250px"
-            borderWidth="1px"
-            borderRadius="lg"
-            rounded="20px"
-            boxShadow="sm"
-            overflow="hidden"
-            bg="gray.200"
-            border="1px"
-          >
-            <Center>
-              <Image pt="4" w="220px" src="settings.png" alt="Settings Icon" />
-            </Center>
-            <Box p="6" as="span" textAlign="center">
-              <Text
-                as="h1"
-                fontWeight="semibold"
-                fontSize="xl"
-                letterSpacing="wide"
-              >
-                Settings
-              </Text>
+          <RouteLink as="ReactRouter" to="/settings">
+            <Box
+              w="250px"
+              borderWidth="1px"
+              borderRadius="lg"
+              rounded="20px"
+              boxShadow="sm"
+              overflow="hidden"
+              bg="gray.200"
+              border="1px"
+            >
+              <Center>
+                <Image
+                  pt="4"
+                  w="220px"
+                  src="settings.png"
+                  alt="Settings Icon"
+                />
+              </Center>
+              <Box p="6" as="span" textAlign="center">
+                <Text
+                  as="h1"
+                  fontWeight="semibold"
+                  fontSize="xl"
+                  letterSpacing="wide"
+                >
+                  Settings
+                </Text>
+              </Box>
             </Box>
-          </Box>
+          </RouteLink>
         </HStack>
       </div>
     );

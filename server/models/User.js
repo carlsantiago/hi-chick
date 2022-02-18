@@ -27,7 +27,7 @@ const userSchema = new Schema({
   },
   userType: {
     type: Boolean,
-    required: true,
+    default: false,
   },
 });
 

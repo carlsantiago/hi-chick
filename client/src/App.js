@@ -12,6 +12,7 @@ import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Overview from "./pages/Overview";
 import DataEntry from "./pages/DataEntry";
+import Settings from "./pages/Settings";
 import { FarmProvider } from "./utils/GlobalState";
 import { Flex, CSSReset, ChakraProvider } from "@chakra-ui/react";
 
@@ -54,6 +55,7 @@ function App() {
                     <Route exact path="/dashboard" component={Dashboard} />
                     <Route exact path="/overview" component={Overview} />
                     <Route exact path="/dataentry" component={DataEntry} />
+                    <Route exact path="/settings" component={Settings} />
                   </Switch>
                 </Flex>
               </Flex>

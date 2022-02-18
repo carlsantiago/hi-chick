@@ -24,15 +24,13 @@ const Header = () => {
   return (
     <Stack textAlign="center">
       <Box w="200px" pos="absolute" top="40px" right="20px">
-        <Text fontSize="xl" mb="20px">
+        <Text fontSize="xl" mb="10px">
           <Moment format="h:mm a">{now}</Moment>
           <br />
           <Moment format="DD/MM/YYYY">{now}</Moment>
           <br />
           Logged in as {Auth.getProfile().data.firstName}
         </Text>
-      </Box>
-      <Box w="200px" pos="absolute" top="40px" left="20px">
         <Menu>
           <MenuButton
             as={Button}

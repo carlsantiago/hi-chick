@@ -67,7 +67,7 @@ const typeDefs = gql`
       lastName: String!
       username: String!
       password: String!
-      userType: Boolean!
+      userType: Boolean
     ): Auth
 
     login(username: String!, password: String!): Auth
