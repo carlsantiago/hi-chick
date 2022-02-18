@@ -122,6 +122,21 @@ const resolvers = {
         eggsCollected,
       });
     },
+
+    updateFlock: async (
+      parent,
+      { _id, femaleCount, maleCount, currentStock }
+    ) => {
+      return await Flock.findOneAndUpdate(
+        { _id },
+        { femaleCount, maleCount, currentStock },
+        {
+          new: true,
+        }
+      )
+        .populate("shed")
+        .populate("breed");
+    },
   },
 };
 

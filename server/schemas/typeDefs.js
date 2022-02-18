@@ -92,6 +92,13 @@ const typeDefs = gql`
       breed: ID!
       status: String!
     ): Flock
+
+    updateFlock(
+      _id: ID!
+      maleCount: Int!
+      femaleCount: Int!
+      currentStock: Int!
+    ): Flock
   }
 `;
 

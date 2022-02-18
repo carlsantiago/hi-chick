@@ -120,3 +120,29 @@ export const ADD_DAILYOPS = gql`
     }
   }
 `;
+
+export const UPDATE_FLOCK = gql`
+  mutation updateFlock(
+    $_id: ID!
+    $femaleCount: Int!
+    $maleCount: Int!
+    $currentStock: Int!
+  ) {
+    updateFlock(
+      _id: $_id
+      femaleCount: $femaleCount
+      maleCount: $maleCount
+      currentStock: $currentStock
+    ) {
+      _id
+      shed {
+        location
+      }
+      breed {
+        name
+      }
+      femaleCount
+      maleCount
+    }
+  }
+`;

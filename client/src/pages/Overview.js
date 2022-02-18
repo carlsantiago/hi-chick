@@ -38,7 +38,7 @@ const Overview = () => {
             <Divider />
             <Box height="300px" width="100%">
               <Table variant="striped" colorScheme="teal">
-                <TableCaption>Farm Overview</TableCaption>
+                <TableCaption>Active Flocks</TableCaption>
 
                 <Thead>
                   <Tr>

@@ -22,42 +22,44 @@ const Header = () => {
   const now = new Date();
 
   return (
-    <Stack>
+    <Stack textAlign="center">
       <Box w="200px" pos="absolute" top="40px" right="20px">
-        <Text fontSize="xl">
+        <Text fontSize="xl" mb="20px">
           <Moment format="h:mm a">{now}</Moment>
           <br />
           <Moment format="DD/MM/YYYY">{now}</Moment>
           <br />
-          {Auth.getProfile().data.firstName} &nbsp;
-          <Menu>
-            <MenuButton
-              as={Button}
-              variant="outline"
-              rightIcon={<ChevronDownIcon />}
-            >
-              Menu
-            </MenuButton>
-            <MenuList>
-              <Link href="/">
-                <MenuItem>Home</MenuItem>
-              </Link>
-              <Link href="/overview">
-                <MenuItem>Farm Overview</MenuItem>
-              </Link>
-              <Link href="/dataentry">
-                <MenuItem>Data Entry</MenuItem>
-              </Link>
-              <MenuItem>Analytics</MenuItem>
-              <MenuItem>Settings</MenuItem>
-              <MenuItem>
-                <Link size="sm" onClick={logout} color="teal.500">
-                  Logout{" "}
-                </Link>
-              </MenuItem>
-            </MenuList>
-          </Menu>
+          Logged in as {Auth.getProfile().data.firstName}
         </Text>
+      </Box>
+      <Box w="200px" pos="absolute" top="40px" left="20px">
+        <Menu>
+          <MenuButton
+            as={Button}
+            variant="outline"
+            rightIcon={<ChevronDownIcon />}
+          >
+            Menu
+          </MenuButton>
+          <MenuList>
+            <Link href="/">
+              <MenuItem>Home</MenuItem>
+            </Link>
+            <Link href="/overview">
+              <MenuItem>Farm Overview</MenuItem>
+            </Link>
+            <Link href="/dataentry">
+              <MenuItem>Data Entry</MenuItem>
+            </Link>
+            <MenuItem>Analytics</MenuItem>
+            <MenuItem>Settings</MenuItem>
+            <MenuItem>
+              <Link size="sm" onClick={logout} color="teal.500">
+                Logout
+              </Link>
+            </MenuItem>
+          </MenuList>
+        </Menu>
       </Box>
     </Stack>
   );

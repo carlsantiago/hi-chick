@@ -26,6 +26,7 @@ import { QUERY_FLOCKS } from "../utils/queries";
 import { useQuery, useMutation } from "@apollo/client";
 import { useFormik } from "formik";
 import { ADD_DAILYOPS } from "../utils/mutations";
+import { UPDATE_FLOCK } from "../utils/mutations";
 
 const DailyOps = () => {
   const { loading, data } = useQuery(QUERY_FLOCKS);
@@ -33,6 +34,20 @@ const DailyOps = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [submitEvent] = useMutation(ADD_DAILYOPS);
+  const [updateFlock] = useMutation(UPDATE_FLOCK);
+
+  const fetchFlock = (morts, id, female, male) => {
+    const foundFlock = flocks.find((flock) => {
+      return flock._id === id;
+    });
+
+    console.log(foundFlock);
+    const newCurrentStock = foundFlock.currentStock - morts;
+    const newFemaleCount = foundFlock.femaleCount - female;
+    const newMaleCount = foundFlock.maleCount - male;
+    console.log(newCurrentStock, newFemaleCount, newMaleCount);
+    return { newCurrentStock, newFemaleCount, newMaleCount };
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -47,7 +62,15 @@ const DailyOps = () => {
       } else {
         onClose();
       }
+      const totalMorts = values.femaleMorts + values.maleMorts;
 
+      let updatedValues = fetchFlock(
+        totalMorts,
+        values.flockId,
+        values.femaleMorts,
+        values.maleMorts
+      );
+      console.log(updatedValues);
       try {
         const { data } = submitEvent({
           variables: {
@@ -57,11 +80,19 @@ const DailyOps = () => {
             maleMorts: values.maleMorts,
           },
         });
+
+        const { data1 } = updateFlock({
+          variables: {
+            _id: values.flockId,
+            femaleCount: updatedValues.newFemaleCount,
+            maleCount: updatedValues.newMaleCount,
+            currentStock: updatedValues.newCurrentStock,
+          },
+        });
       } catch (err) {
         console.error(err);
       }
-      // window.location.reload();
-      console.log(values);
+      window.location.reload();
     },
   });
 
