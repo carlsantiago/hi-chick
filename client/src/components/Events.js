@@ -1,8 +1,6 @@
-import { React, useState, useEffect } from "react";
-import { getAlldb } from "../utils/indexedDB";
-import { QUERY_FLOCKS } from "../utils/queries";
+import { React } from "react";
+import { QUERY_FLOCKS, QUERY_DAILYOPS } from "../utils/queries";
 import { useQuery } from "@apollo/client";
-import SubmitData from "./SubmitData";
 
 import {
   Tbody,
@@ -13,25 +11,19 @@ import {
   Th,
   TableCaption,
   Text,
+  Button,
 } from "@chakra-ui/react";
+import moment from "moment";
+import { EditIcon } from "@chakra-ui/icons";
 
 const Events = () => {
-  const [eventsArr, setArray] = useState([]);
-
   const { loading, data } = useQuery(QUERY_FLOCKS);
   const flocks = data?.flocks || [];
-
-  useEffect(() => {
-    async function fetchData() {
-      const result = await getAlldb();
-      let tempArr = [];
-      for (let data of result) {
-        tempArr.push(data);
-      }
-      setArray(tempArr);
-    }
-    fetchData();
-  }, []);
+  console.log(flocks);
+  const { loading: dailyOpsLoading, data: dailyOpsData } =
+    useQuery(QUERY_DAILYOPS);
+  const dailyOps = dailyOpsData?.dailyOps || [];
+  console.log(dailyOps);
 
   const getName = (id) => {
     const foundFlock = flocks.find((flock) => {
@@ -41,19 +33,17 @@ const Events = () => {
     return foundFlock.shed.location + " - " + foundFlock.breed.name;
   };
 
-  console.log(eventsArr);
-  if (loading) {
+  if (loading || dailyOpsLoading) {
     return <div>Loading</div>;
   }
   return (
     <>
-      {eventsArr.length ? (
+      {dailyOps.length ? (
         <Table>
-          <TableCaption>
-            {eventsArr.length} Pending <SubmitData />
-          </TableCaption>
+          <TableCaption>Recent Events</TableCaption>
           <Thead>
             <Tr>
+              <Th>Date</Th>
               <Th>Flock</Th>
               <Th>Eggs Collected</Th>
               <Th>Female Morts</Th>
@@ -61,13 +51,19 @@ const Events = () => {
             </Tr>
           </Thead>
           <Tbody>
-            {eventsArr &&
-              eventsArr.map((index) => (
-                <Tr key={index.id}>
-                  <Td>{getName(index.event.flock)}</Td>
-                  <Td>{index.event.eggsCollected}</Td>
-                  <Td>{index.event.mortsMale}</Td>
-                  <Td>{index.event.mortsFemale}</Td>
+            {dailyOps &&
+              dailyOps.map((index) => (
+                <Tr key={index._id}>
+                  <Td>{moment(index.date).format("DD-MM-YY")}</Td>
+                  <Td>{getName(index.flockId._id)}</Td>
+                  <Td>{index.eggsCollected}</Td>
+                  <Td>{index.maleMorts}</Td>
+                  <Td>{index.femaleMorts}</Td>
+                  <Td>
+                    <Button variant="ghost">
+                      <EditIcon />
+                    </Button>
+                  </Td>
                 </Tr>
               ))}
           </Tbody>

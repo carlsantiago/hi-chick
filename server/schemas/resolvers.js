@@ -43,6 +43,9 @@ const resolvers = {
     location: async (parent, _id) => {
       return await Shed.findById(_id);
     },
+    dailyOps: async () => {
+      return await DailyOps.find();
+    },
   },
 
   Mutation: {
@@ -77,12 +80,6 @@ const resolvers = {
 
       return { token, user };
     },
-    // addShed: async (parent, { location }) => {
-    //   return await Shed.create({ location });
-    // },
-    // addBreed: async (parent, { name }) => {
-    //   return await Breed.create({ name });
-    // },
 
     addFlock: async (
       parent,

@@ -38,6 +38,20 @@ export const QUERY_FLOCKS = gql`
   }
 `;
 
+export const QUERY_DAILYOPS = gql`
+  query DailyOps {
+    dailyOps {
+      _id
+      date
+      flockId {
+        _id
+      }
+      femaleMorts
+      maleMorts
+      eggsCollected
+    }
+  }
+`;
 export const QUERY_SINGLE_FLOCK = gql`
   query getFlock($id: ID!) {
     flock(_id: $id) {
@@ -51,6 +65,7 @@ export const QUERY_SINGLE_FLOCK = gql`
     }
   }
 `;
+
 export const QUERY_SHED = gql`
   query getShed($location: [ID]!) {
     shed(_id: $location) {

@@ -58,6 +58,7 @@ const typeDefs = gql`
     shed: [Shed]
     breed: [Breed]
     location(_id: ID!): Shed
+    dailyOps: [DailyOps]
   }
 
   type Mutation {

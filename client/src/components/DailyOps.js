@@ -23,32 +23,44 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVenus, faMars } from "@fortawesome/free-solid-svg-icons";
 import { QUERY_FLOCKS } from "../utils/queries";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import { useFormik } from "formik";
-import { postDb } from "../utils/indexedDB";
+import { ADD_DAILYOPS } from "../utils/mutations";
 
 const DailyOps = () => {
   const { loading, data } = useQuery(QUERY_FLOCKS);
   const flocks = data?.flocks || [];
-  console.log(flocks);
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const [submitEvent] = useMutation(ADD_DAILYOPS);
 
   const formik = useFormik({
     initialValues: {
-      flock: "",
-      eggsCollected: "",
-      mortsFemale: "",
-      mortsMale: "",
+      flockId: "",
+      eggsCollected: null,
+      femaleMorts: null,
+      maleMorts: null,
     },
     onSubmit: (values) => {
-      if (!values.flock) {
+      if (!values.flockId) {
         console.log("NO FLOCK");
       } else {
         onClose();
       }
 
-      postDb(values);
-      window.location.reload();
+      try {
+        const { data } = submitEvent({
+          variables: {
+            flockId: values.flockId,
+            eggsCollected: values.eggsCollected,
+            femaleMorts: values.femaleMorts,
+            maleMorts: values.maleMorts,
+          },
+        });
+      } catch (err) {
+        console.error(err);
+      }
+      // window.location.reload();
       console.log(values);
     },
   });
@@ -67,22 +79,18 @@ const DailyOps = () => {
             <ModalBody pb={6}>
               <form onSubmit={formik.handleSubmit}>
                 <FormControl isRequired>
-                  <FormLabel htmlFor="flock">Flock</FormLabel>
+                  <FormLabel htmlFor="flockId">Flock</FormLabel>
                   <Select
-                    id="flock"
-                    name="flock"
-                    value={formik.values.flock}
+                    id="flockId"
+                    name="flockId"
+                    value={formik.values.flockId}
                     onChange={formik.handleChange}
                     placeholder="Please select one"
                     size="lg"
                   >
                     {flocks &&
                       flocks.map((flock) => (
-                        <option
-                          value={flock._id}
-                          data-id={flock._id}
-                          key={flock._id}
-                        >
+                        <option value={flock._id} key={flock._id}>
                           {flock.shed.location} - {flock.breed.name}
                         </option>
                       ))}
@@ -94,6 +102,7 @@ const DailyOps = () => {
                   <NumberInputField
                     id="eggsCollected"
                     name="eggsCollected"
+                    type="number"
                     value={formik.values.eggsCollected}
                     onChange={formik.handleChange}
                   />
@@ -113,9 +122,10 @@ const DailyOps = () => {
 
                   <NumberInput min={0} w="100%">
                     <NumberInputField
-                      id="mortsFemale"
-                      name="mortsFemale"
-                      value={formik.values.mortsFemale}
+                      id="femaleMorts"
+                      name="femaleMorts"
+                      type="number"
+                      value={formik.values.femaleMorts}
                       onChange={formik.handleChange}
                       borderLeftRadius="0"
                     />
@@ -134,9 +144,10 @@ const DailyOps = () => {
 
                   <NumberInput min={0} w="100%">
                     <NumberInputField
-                      id="mortsMale"
-                      name="mortsMale"
-                      value={formik.values.mortsMale}
+                      id="maleMorts"
+                      name="maleMorts"
+                      type="number"
+                      value={formik.values.maleMorts}
                       onChange={formik.handleChange}
                       borderLeftRadius="0"
                     />
