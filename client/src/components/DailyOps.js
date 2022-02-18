@@ -67,14 +67,16 @@ const DailyOps = () => {
 
   return (
     <>
-      <Button onClick={onOpen}>Daily Operations</Button>
+      <Button colorScheme="teal" w="200px" onClick={onOpen}>
+        Daily Operations
+      </Button>
       {loading ? (
         <div>Loading...</div>
       ) : (
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>Add Event</ModalHeader>
+            <ModalHeader>Add Daily Operation</ModalHeader>
             <ModalCloseButton />
             <ModalBody pb={6}>
               <form onSubmit={formik.handleSubmit}>

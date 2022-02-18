@@ -52,7 +52,7 @@ const Events = () => {
           </Thead>
           <Tbody>
             {dailyOps &&
-              dailyOps.map((index) => (
+              dailyOps.slice(0, 3).map((index) => (
                 <Tr key={index._id}>
                   <Td>{moment(index.date).format("DD-MM-YY")}</Td>
                   <Td>{getName(index.flockId._id)}</Td>

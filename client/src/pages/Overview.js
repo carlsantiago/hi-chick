@@ -2,7 +2,18 @@ import React from "react";
 import Header from "../components/Header";
 import { Redirect } from "react-router-dom";
 import Auth from "../utils/auth";
-import { Table, Thead, Tfoot, Tr, Th, TableCaption } from "@chakra-ui/react";
+import {
+  Table,
+  Thead,
+  Tfoot,
+  Tr,
+  Th,
+  TableCaption,
+  Heading,
+  Box,
+  Stack,
+  Divider,
+} from "@chakra-ui/react";
 import { useQuery } from "@apollo/client";
 import { QUERY_FLOCKS } from "../utils/queries";
 import FlockList from "../components/FlockList";
@@ -16,28 +27,38 @@ const Overview = () => {
     return (
       <div>
         <Header />
+
         {loading ? (
           <div>Loading...</div>
         ) : (
-          <Table variant="striped" colorScheme="teal">
-            <TableCaption>Farm Overview</TableCaption>
-            <Thead>
-              <Tr>
-                <Th>Shed</Th>
-                <Th>Breed</Th>
-                <Th isNumeric>Age</Th>
-                <Th isNumeric>Initial Stock</Th>
-                <Th isNumeric>Current Stock</Th>
-                <Th isNumeric>Females</Th>
-                <Th isNumeric>Males</Th>
-                <Th>Vaccinated</Th>
-                <Th>Status</Th>
-              </Tr>
-            </Thead>
-            <FlockList flocks={flocks} />
+          <Stack>
+            <Heading as="h2" size="2xl">
+              Farm Overview
+            </Heading>
+            <Divider />
+            <Box height="300px" width="100%">
+              <Table variant="striped" colorScheme="teal">
+                <TableCaption>Farm Overview</TableCaption>
 
-            <Tfoot></Tfoot>
-          </Table>
+                <Thead>
+                  <Tr>
+                    <Th>Shed</Th>
+                    <Th>Breed</Th>
+                    <Th isNumeric>Age</Th>
+                    <Th isNumeric>Initial Stock</Th>
+                    <Th isNumeric>Current Stock</Th>
+                    <Th isNumeric>Females</Th>
+                    <Th isNumeric>Males</Th>
+                    <Th>Vaccinated</Th>
+                    <Th>Status</Th>
+                  </Tr>
+                </Thead>
+                <FlockList flocks={flocks} />
+
+                <Tfoot></Tfoot>
+              </Table>
+            </Box>
+          </Stack>
         )}
       </div>
     );

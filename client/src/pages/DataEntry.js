@@ -2,12 +2,13 @@ import React from "react";
 import Header from "../components/Header";
 import { Redirect } from "react-router-dom";
 import Auth from "../utils/auth";
-import { useMutation } from "@apollo/client";
 import DailyOps from "../components/DailyOps";
-import { Box, VStack, Stack, Text, Divider } from "@chakra-ui/react";
+import { Box, VStack, Stack, Divider, Heading } from "@chakra-ui/react";
 import { QUERY_FLOCKS } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 import Events from "../components/Events";
+import Vaccination from "../components/Vaccination";
+import Weighing from "../components/Weighing";
 
 const DataEntry = () => {
   const { loading, data } = useQuery(QUERY_FLOCKS);
@@ -21,10 +22,15 @@ const DataEntry = () => {
         ) : (
           <>
             <Stack>
-              <Text> Add Event</Text>
-              <Box height="380px" width="100%">
-                <VStack>
+              <Heading as="h2" size="2xl">
+                Data Entry
+              </Heading>
+              <Divider />
+              <Box height="300px" width="100%">
+                <VStack my="50px">
                   <DailyOps />
+                  <Vaccination />
+                  <Weighing />
                 </VStack>
               </Box>
             </Stack>
