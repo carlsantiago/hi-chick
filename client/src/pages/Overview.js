@@ -5,18 +5,18 @@ import Auth from "../utils/auth";
 import {
   Table,
   Thead,
-  Tfoot,
   Tr,
   Th,
   TableCaption,
   Heading,
   Box,
-  Stack,
   Divider,
+  Flex,
 } from "@chakra-ui/react";
 import { useQuery } from "@apollo/client";
 import { QUERY_FLOCKS } from "../utils/queries";
 import FlockList from "../components/FlockList";
+import Footer from "../components/Footer";
 
 const Overview = () => {
   const { loading, data } = useQuery(QUERY_FLOCKS);
@@ -25,19 +25,20 @@ const Overview = () => {
 
   if (Auth.loggedIn()) {
     return (
-      <div>
+      <>
         <Header />
 
         {loading ? (
           <div>Loading...</div>
         ) : (
-          <Stack>
-            <Heading as="h2" size="2xl">
+          <Flex flexDirection="column" overflowX="auto">
+            <Heading as="h2" size="2xl" mb="10px">
               Farm Overview
             </Heading>
+
             <Divider />
-            <Box height="300px" width="100%">
-              <Table variant="striped" colorScheme="teal">
+            <Box>
+              <Table variant="striped" colorScheme="yellow" size="md">
                 <TableCaption>Active Flocks</TableCaption>
 
                 <Thead>
@@ -54,13 +55,12 @@ const Overview = () => {
                   </Tr>
                 </Thead>
                 <FlockList flocks={flocks} />
-
-                <Tfoot></Tfoot>
               </Table>
             </Box>
-          </Stack>
+          </Flex>
         )}
-      </div>
+        <Footer />
+      </>
     );
   } else {
     <Redirect to="/" />;

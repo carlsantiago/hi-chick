@@ -98,7 +98,7 @@ const DailyOps = () => {
 
   return (
     <>
-      <Button colorScheme="teal" w="200px" onClick={onOpen}>
+      <Button colorScheme="yellow" w="200px" onClick={onOpen}>
         Daily Operations
       </Button>
       {loading ? (

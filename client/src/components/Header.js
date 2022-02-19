@@ -9,6 +9,8 @@ import {
   MenuList,
   MenuItem,
   Button,
+  Flex,
+  Image,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import Auth from "../utils/auth";
@@ -22,8 +24,17 @@ const Header = () => {
   const now = new Date();
 
   return (
-    <Stack textAlign="center">
-      <Box w="200px" pos="absolute" top="40px" right="20px">
+    <Flex
+      width="100%"
+      justifyContent="space-between"
+      direction="column"
+      pos="absolute"
+      top="40px"
+    >
+      <Link href="/">
+        <Image src="./HiChickWhite.png" w="230px" />
+      </Link>
+      <Box w="200px" pos="absolute" right="20px" textAlign="center">
         <Text fontSize="xl" mb="10px">
           <Moment format="h:mm a">{now}</Moment>
           <br />
@@ -34,7 +45,8 @@ const Header = () => {
         <Menu>
           <MenuButton
             as={Button}
-            variant="outline"
+            colorScheme="yellow"
+            variant="solid"
             rightIcon={<ChevronDownIcon />}
           >
             Menu
@@ -61,7 +73,8 @@ const Header = () => {
           </MenuList>
         </Menu>
       </Box>
-    </Stack>
+    </Flex>
   );
 };
+
 export default Header;

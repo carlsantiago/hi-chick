@@ -15,6 +15,7 @@ import DataEntry from "./pages/DataEntry";
 import Settings from "./pages/Settings";
 import { FarmProvider } from "./utils/GlobalState";
 import { Flex, CSSReset, ChakraProvider } from "@chakra-ui/react";
+import Footer from "./components/Footer";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -49,7 +50,13 @@ function App() {
             <ChakraProvider>
               <Flex direction="column" align="center" justify="center">
                 <CSSReset />
-                <Flex justify="center" align="center" w="100%" h="93vh">
+                <Flex
+                  justify="center"
+                  align="center"
+                  w="100vw"
+                  h="100vh"
+                  bgGradient="linear(yellow.300 0%, yellow.50 25%, white 50%)'"
+                >
                   <Switch>
                     <Route exact path="/" component={Home} />
                     <Route exact path="/dashboard" component={Dashboard} />

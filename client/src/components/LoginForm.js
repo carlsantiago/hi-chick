@@ -87,7 +87,7 @@ const LoginForm = (props) => {
                 />
               </InputGroup>
             </FormControl>
-            <Button type="submit" variant="solid" colorScheme="blue">
+            <Button type="submit" variant="solid" colorScheme="green">
               Log in
             </Button>
           </Stack>

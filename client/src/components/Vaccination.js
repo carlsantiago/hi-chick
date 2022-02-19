@@ -29,7 +29,7 @@ const Vaccination = () => {
   });
   return (
     <>
-      <Button colorScheme="teal" w="200px" onClick={onOpen}>
+      <Button colorScheme="yellow" w="200px" onClick={onOpen}>
         Vaccination
       </Button>
       <Modal isOpen={isOpen} onClose={onClose}>

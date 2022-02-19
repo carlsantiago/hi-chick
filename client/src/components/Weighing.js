@@ -29,7 +29,7 @@ const Weighing = () => {
   });
   return (
     <>
-      <Button colorScheme="teal" w="200px" onClick={onOpen}>
+      <Button colorScheme="yellow" w="200px" onClick={onOpen}>
         Weighing
       </Button>
       <Modal isOpen={isOpen} onClose={onClose}>
