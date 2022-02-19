@@ -90,7 +90,7 @@ const typeDefs = gql`
       vaccinated: Boolean
       shed: ID!
       breed: ID!
-      status: String!
+      status: String
     ): Flock
 
     updateFlock(

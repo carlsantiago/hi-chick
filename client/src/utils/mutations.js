@@ -40,19 +40,21 @@ export const ADD_USER = gql`
 
 export const ADD_FLOCK = gql`
   mutation addFlock(
-    $startDate: String!
+    $startDate: Date
     $initialStock: Int!
+    $currentStock: Int!
     $age: Int!
     $femaleCount: Int!
     $maleCount: Int!
     $vaccinated: Boolean
     $shed: ID!
     $breed: ID!
-    $status: String!
+    $status: String
   ) {
     addFlock(
       startDate: $startDate
       initialStock: $initialStock
+      currentStock: $currentStock
       age: $age
       femaleCount: $femaleCount
       maleCount: $maleCount

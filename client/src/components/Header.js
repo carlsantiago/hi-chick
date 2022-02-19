@@ -50,7 +50,9 @@ const Header = () => {
               <MenuItem>Data Entry</MenuItem>
             </Link>
             <MenuItem>Analytics</MenuItem>
-            <MenuItem>Settings</MenuItem>
+            <Link href="/settings">
+              <MenuItem>Settings</MenuItem>
+            </Link>
             <MenuItem>
               <Link size="sm" onClick={logout} color="teal.500">
                 Logout

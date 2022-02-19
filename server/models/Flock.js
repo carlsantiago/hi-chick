@@ -27,6 +27,7 @@ const flockSchema = new Schema({
   },
   vaccinated: {
     type: Boolean,
+    default: false,
   },
   shed: {
     type: Schema.Types.ObjectId,
@@ -40,7 +41,7 @@ const flockSchema = new Schema({
   },
   status: {
     type: String,
-    required: true,
+    default: "Active",
   },
 });
 

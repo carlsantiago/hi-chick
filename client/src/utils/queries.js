@@ -65,7 +65,23 @@ export const QUERY_SINGLE_FLOCK = gql`
     }
   }
 `;
+export const QUERY_SHEDS = gql`
+  query getSheds {
+    shed {
+      _id
+      location
+    }
+  }
+`;
 
+export const QUERY_BREEDS = gql`
+  query getBreed {
+    breed {
+      _id
+      name
+    }
+  }
+`;
 export const QUERY_SHED = gql`
   query getShed($location: [ID]!) {
     shed(_id: $location) {
