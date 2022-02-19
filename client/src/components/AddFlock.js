@@ -22,9 +22,10 @@ import {
   NumberDecrementStepper,
   Select,
   InputGroup,
-  Input,
   InputRightAddon,
 } from "@chakra-ui/react";
+import AddLocation from "./AddLocation";
+import AddBreed from "./AddBreed";
 
 const AddFlock = () => {
   const { loading, data } = useQuery(QUERY_SHEDS);
@@ -62,11 +63,10 @@ const AddFlock = () => {
         });
         onClose();
       } catch (err) {
-        console.error(err);
+        console.log(err);
       }
     },
   });
-
   return (
     <>
       <Button colorScheme="teal" w="200px" onClick={onOpen}>
@@ -100,6 +100,7 @@ const AddFlock = () => {
                         </option>
                       ))}
                   </Select>
+                  <AddLocation />
                 </FormControl>
 
                 <FormControl>
@@ -119,6 +120,7 @@ const AddFlock = () => {
                         </option>
                       ))}
                   </Select>
+                  <AddBreed />
                 </FormControl>
                 <FormControl>
                   <FormLabel>Age</FormLabel>

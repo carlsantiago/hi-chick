@@ -99,6 +99,9 @@ const typeDefs = gql`
       femaleCount: Int!
       currentStock: Int!
     ): Flock
+
+    addLocation(location: String!): Shed
+    addBreed(name: String!): Breed
   }
 `;
 

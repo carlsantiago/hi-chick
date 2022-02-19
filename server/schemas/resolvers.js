@@ -137,6 +137,13 @@ const resolvers = {
         .populate("shed")
         .populate("breed");
     },
+
+    addLocation: async (parent, { location }) => {
+      return await Shed.create({ location });
+    },
+    addBreed: async (parent, { name }) => {
+      return await Breed.create({ name });
+    },
   },
 };
 

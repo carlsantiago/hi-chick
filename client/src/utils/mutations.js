@@ -82,8 +82,8 @@ export const ADD_FLOCK = gql`
 `;
 
 export const ADD_SHED = gql`
-  mutation addShed($location: String!) {
-    addShed(location: $location) {
+  mutation addLocation($location: String!) {
+    addLocation(location: $location) {
       _id
       location
     }

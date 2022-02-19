@@ -26,6 +26,7 @@ const Events = () => {
   console.log(dailyOps);
 
   const getName = (id) => {
+    console.log(id);
     const foundFlock = flocks.find((flock) => {
       return flock._id === id;
     });
