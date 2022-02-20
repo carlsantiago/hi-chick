@@ -12,6 +12,7 @@ import {
   TableCaption,
   Text,
   Button,
+  Spinner,
 } from "@chakra-ui/react";
 import moment from "moment";
 import { EditIcon } from "@chakra-ui/icons";
@@ -35,12 +36,12 @@ const Events = () => {
   };
 
   if (loading || dailyOpsLoading) {
-    return <div>Loading</div>;
+    return <Spinner size="xl" />;
   }
   return (
     <>
       {dailyOps.length ? (
-        <Table>
+        <Table colorScheme="black">
           <TableCaption>Recent Events</TableCaption>
           <Thead>
             <Tr>
@@ -49,6 +50,7 @@ const Events = () => {
               <Th>Eggs Collected</Th>
               <Th>Female Morts</Th>
               <Th>Male Morts</Th>
+              <Th>Edit</Th>
             </Tr>
           </Thead>
           <Tbody>

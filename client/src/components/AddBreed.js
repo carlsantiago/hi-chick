@@ -43,7 +43,7 @@ const AddBreed = () => {
 
   return (
     <>
-      <Button onClick={onOpen} mt={2} colorScheme="teal" variant="outline">
+      <Button onClick={onOpen} mt={2} colorScheme="yellow" variant="outline">
         Click to add a breed
       </Button>
 
@@ -68,7 +68,7 @@ const AddBreed = () => {
             </ModalBody>
 
             <ModalFooter>
-              <Button colorScheme="blue" mr={3} type="submit">
+              <Button colorScheme="yellow" mr={3} type="submit">
                 Save
               </Button>
               <Button onClick={onClose}>Cancel</Button>

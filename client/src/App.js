@@ -15,7 +15,7 @@ import DataEntry from "./pages/DataEntry";
 import Settings from "./pages/Settings";
 import { FarmProvider } from "./utils/GlobalState";
 import { Flex, CSSReset, ChakraProvider } from "@chakra-ui/react";
-import Footer from "./components/Footer";
+import Analytics from "./pages/Analytics";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -45,30 +45,29 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div>
-          <FarmProvider>
-            <ChakraProvider>
-              <Flex direction="column" align="center" justify="center">
-                <CSSReset />
-                <Flex
-                  justify="center"
-                  align="center"
-                  w="100vw"
-                  h="100vh"
-                  bgGradient="linear(yellow.300 0%, yellow.50 25%, white 50%)'"
-                >
-                  <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route exact path="/dashboard" component={Dashboard} />
-                    <Route exact path="/overview" component={Overview} />
-                    <Route exact path="/dataentry" component={DataEntry} />
-                    <Route exact path="/settings" component={Settings} />
-                  </Switch>
-                </Flex>
+        <FarmProvider>
+          <ChakraProvider>
+            <Flex direction="column" align="center" justify="center">
+              <CSSReset />
+              <Flex
+                justify="center"
+                align="center"
+                w="100vw"
+                h="100vh"
+                bgGradient={["linear(to-r, yellow.100, yellow.200)"]}
+              >
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                  <Route exact path="/dashboard" component={Dashboard} />
+                  <Route exact path="/overview" component={Overview} />
+                  <Route exact path="/dataentry" component={DataEntry} />
+                  <Route exact path="/settings" component={Settings} />
+                  <Route exact path="/analytics" component={Analytics} />
+                </Switch>
               </Flex>
-            </ChakraProvider>
-          </FarmProvider>
-        </div>
+            </Flex>
+          </ChakraProvider>
+        </FarmProvider>
       </Router>
     </ApolloProvider>
   );

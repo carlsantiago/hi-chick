@@ -19,6 +19,7 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
+  Spinner,
 } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVenus, faMars } from "@fortawesome/free-solid-svg-icons";
@@ -102,7 +103,7 @@ const DailyOps = () => {
         Daily Operations
       </Button>
       {loading ? (
-        <div>Loading...</div>
+        <Spinner size="xl" />
       ) : (
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
@@ -118,7 +119,7 @@ const DailyOps = () => {
                     name="flockId"
                     value={formik.values.flockId}
                     onChange={formik.handleChange}
-                    placeholder="Please select one"
+                    placeholder="Select one"
                     size="lg"
                   >
                     {flocks &&
@@ -169,7 +170,7 @@ const DailyOps = () => {
                   </NumberInput>
                 </InputGroup>
 
-                <InputGroup>
+                <InputGroup mt="10px">
                   <InputLeftAddon
                     fontSize="1.2em"
                     children={<FontAwesomeIcon icon={faMars} />}
@@ -192,7 +193,12 @@ const DailyOps = () => {
                 </InputGroup>
 
                 <ModalFooter>
-                  <Button colorScheme="blue" mr={3} value="save" type="submit">
+                  <Button
+                    colorScheme="yellow"
+                    mr={3}
+                    value="save"
+                    type="submit"
+                  >
                     Save
                   </Button>
                   <Button onClick={onClose}>Cancel</Button>

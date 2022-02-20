@@ -23,6 +23,7 @@ import {
   Select,
   InputGroup,
   InputRightAddon,
+  Spinner,
 } from "@chakra-ui/react";
 import AddLocation from "./AddLocation";
 import AddBreed from "./AddBreed";
@@ -69,11 +70,11 @@ const AddFlock = () => {
   });
   return (
     <>
-      <Button colorScheme="teal" w="200px" onClick={onOpen}>
+      <Button colorScheme="yellow" w="200px" onClick={onOpen}>
         Add a flock
       </Button>
       {loading && breedLoading ? (
-        <div>Loading...</div>
+        <Spinner size="xl" />
       ) : (
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
@@ -188,7 +189,7 @@ const AddFlock = () => {
                 </FormControl>
 
                 <ModalFooter mt={5} p={0}>
-                  <Button colorScheme="blue" mr={3} type="submit">
+                  <Button colorScheme="yellow" mr={3} type="submit">
                     Create
                   </Button>
                   <Button onClick={onClose}>Cancel</Button>

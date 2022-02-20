@@ -2,7 +2,16 @@ import React from "react";
 import Header from "../components/Header";
 import { Redirect } from "react-router-dom";
 import Auth from "../utils/auth";
-import { Heading, Divider, Box, VStack, Flex } from "@chakra-ui/react";
+import {
+  Heading,
+  Divider,
+  Box,
+  VStack,
+  Flex,
+  Link,
+  Button,
+  Stack,
+} from "@chakra-ui/react";
 import AddUser from "../components/AddUser";
 import AddFlock from "../components/AddFlock";
 import Footer from "../components/Footer";
@@ -14,7 +23,12 @@ const Settings = () => {
     return (
       <>
         {!userAuth ? (
-          <Heading>Unauthorized access</Heading>
+          <Stack>
+            <Heading>Unauthorized access</Heading>
+            <Link href="/">
+              <Button colorScheme="yellow">Go Back</Button>
+            </Link>
+          </Stack>
         ) : (
           <>
             <Header />
@@ -23,9 +37,9 @@ const Settings = () => {
                 Administrative Tools
               </Heading>
 
-              <Divider />
+              <Divider borderColor="black" mt="20px" />
               <Box heigh="300px" width="100%">
-                <VStack my="50px">
+                <VStack my="40px">
                   <AddUser />
                   <AddFlock />
                 </VStack>

@@ -12,6 +12,7 @@ import {
   Box,
   Divider,
   Flex,
+  Spinner,
 } from "@chakra-ui/react";
 import { useQuery } from "@apollo/client";
 import { QUERY_FLOCKS } from "../utils/queries";
@@ -29,16 +30,16 @@ const Overview = () => {
         <Header />
 
         {loading ? (
-          <div>Loading...</div>
+          <Spinner size="xl" />
         ) : (
           <Flex flexDirection="column" overflowX="auto">
             <Heading as="h2" size="2xl" mb="10px">
               Farm Overview
             </Heading>
 
-            <Divider />
+            <Divider borderColor="black" />
             <Box>
-              <Table variant="striped" colorScheme="yellow" size="md">
+              <Table variant="striped" colorScheme="black" size="md">
                 <TableCaption>Active Flocks</TableCaption>
 
                 <Thead>
@@ -63,7 +64,7 @@ const Overview = () => {
       </>
     );
   } else {
-    <Redirect to="/" />;
+    return <Redirect to="/" />;
   }
 };
 

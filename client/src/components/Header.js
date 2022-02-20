@@ -2,7 +2,6 @@ import React from "react";
 import {
   Box,
   Text,
-  Stack,
   Link,
   Menu,
   MenuButton,
@@ -61,7 +60,9 @@ const Header = () => {
             <Link href="/dataentry">
               <MenuItem>Data Entry</MenuItem>
             </Link>
-            <MenuItem>Analytics</MenuItem>
+            <Link href="/analytics">
+              <MenuItem>Analytics</MenuItem>
+            </Link>
             <Link href="/settings">
               <MenuItem>Settings</MenuItem>
             </Link>

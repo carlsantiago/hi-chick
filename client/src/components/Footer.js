@@ -24,29 +24,36 @@ export const Footer = () => (
     pos="fixed"
     bottom="0px"
     height="10vh"
+    bgGradient={["linear(to-r, yellow.100, yellow.200)"]}
   >
-    <Stack width="100%" justify="center" direction="row" align="center">
+    <Stack width="100%" justify="center" direction="column" align="center">
       <Text fontSize="16px" color="subtle">
-        ©{new Date().getFullYear()} - HiChick. All rights reserved.
+        ©{new Date().getFullYear()} - Carl Santiago
+      </Text>
+      <Text fontSize="14px" color="subtle">
+        All rights reserved.
       </Text>
     </Stack>
     <ButtonGroup variant="ghost">
       <IconButton
         as="a"
-        href="#"
+        href="https://www.linkedin.com/in/carlsantiago/"
         aria-label="LinkedIn"
         icon={<FaLinkedin fontSize="1.25rem" />}
+        target="_blank"
       />
       <IconButton
         as="a"
-        href="#"
+        href="https://github.com/carlsantiago"
         aria-label="GitHub"
         icon={<FaGithub fontSize="1.25rem" />}
+        target="_blank"
       />
       <IconButton
         as="a"
-        href="#"
-        aria-label="Twitter"
+        href="mailto:4518gg@gmail.com"
+        aria-label="Email"
+        target="_blank"
         icon={<EmailIcon fontSize="1.25rem" />}
       />
     </ButtonGroup>

@@ -9,6 +9,8 @@ import {
   InputLeftElement,
   Button,
   FormControl,
+  Spinner,
+  Center,
 } from "@chakra-ui/react";
 
 import { LockIcon, InfoIcon } from "@chakra-ui/icons";
@@ -51,10 +53,9 @@ const LoginForm = (props) => {
   return (
     <div>
       {data ? (
-        <p>
-          Success! You may now head{" "}
-          <Link to="/dashboard"> back to the hompage.</Link>
-        </p>
+        <Center>
+          <Spinner size="xl" color="blue.500" />
+        </Center>
       ) : (
         <form action="submit" onSubmit={handleFormSubmit}>
           <Stack spacing={4}>

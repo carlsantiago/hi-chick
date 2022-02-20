@@ -21,8 +21,6 @@ import { useMutation } from "@apollo/client";
 const AddUser = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const [show, setShow] = React.useState(false);
-
   const [submitUser] = useMutation(ADD_USER);
 
   const formik = useFormik({
@@ -57,7 +55,7 @@ const AddUser = () => {
 
   return (
     <>
-      <Button colorScheme="teal" w="200px" onClick={onOpen}>
+      <Button colorScheme="yellow" w="200px" onClick={onOpen}>
         Create an account
       </Button>
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -87,7 +85,7 @@ const AddUser = () => {
                     name="password"
                     value={formik.values.password}
                     onChange={formik.handleChange}
-                    type={show ? "text" : "password"}
+                    type="password"
                     placeholder="Enter password"
                   />
                 </InputGroup>
@@ -118,7 +116,7 @@ const AddUser = () => {
               </FormControl>
 
               <ModalFooter mt={5} p={0}>
-                <Button colorScheme="blue" mr={3} type="submit">
+                <Button colorScheme="yellow" mr={3} type="submit">
                   Create
                 </Button>
                 <Button onClick={onClose}>Cancel</Button>

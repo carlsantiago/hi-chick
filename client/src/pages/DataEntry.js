@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import { Redirect } from "react-router-dom";
 import Auth from "../utils/auth";
 import DailyOps from "../components/DailyOps";
-import { Box, VStack, Divider, Heading, Flex } from "@chakra-ui/react";
+import { Box, VStack, Divider, Heading, Flex, Spinner } from "@chakra-ui/react";
 import { QUERY_FLOCKS } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 import Events from "../components/Events";
@@ -18,14 +18,14 @@ const DataEntry = () => {
       <>
         <Header />
         {loading ? (
-          <div>Loading...</div>
+          <Spinner size="xl" />
         ) : (
           <Flex flexDirection="column">
             <VStack>
               <Heading as="h2" size="2xl">
                 Data Entry
               </Heading>
-              <Divider />
+              <Divider borderColor="black" borderColor="black" />
               <Box height="300px">
                 <VStack my="50px">
                   <DailyOps />
@@ -34,7 +34,7 @@ const DataEntry = () => {
                 </VStack>
               </Box>
             </VStack>
-            <Divider />
+            <Divider borderColor="black" />
             <Flex overflowX="auto">
               <Events />
             </Flex>
