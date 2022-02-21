@@ -75,7 +75,7 @@ const Events = () => {
           </Tbody>
         </Table>
       ) : (
-        <Text>No pending events</Text>
+        <Text>No events</Text>
       )}
     </>
   );

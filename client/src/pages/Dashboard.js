@@ -33,7 +33,7 @@ const Dashboard = () => {
                 <Image
                   pt="4"
                   w="220px"
-                  src="Dashboard.png"
+                  src="dashboard.png"
                   alt="Dashboard Icon"
                 />
               </Center>
