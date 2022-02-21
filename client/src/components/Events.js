@@ -11,11 +11,10 @@ import {
   Th,
   TableCaption,
   Text,
-  Button,
   Spinner,
 } from "@chakra-ui/react";
 import moment from "moment";
-import { EditIcon } from "@chakra-ui/icons";
+import EditEvent from "./EditEvent";
 
 const Events = () => {
   const { loading, data } = useQuery(QUERY_FLOCKS);
@@ -31,8 +30,8 @@ const Events = () => {
     const foundFlock = flocks.find((flock) => {
       return flock._id === id;
     });
-
-    return foundFlock.shed.location + " - " + foundFlock.breed.name;
+    const name = foundFlock.shed.location + " - " + foundFlock.breed.name;
+    return name;
   };
 
   if (loading || dailyOpsLoading) {
@@ -63,9 +62,13 @@ const Events = () => {
                   <Td>{index.maleMorts}</Td>
                   <Td>{index.femaleMorts}</Td>
                   <Td>
-                    <Button variant="ghost">
-                      <EditIcon />
-                    </Button>
+                    <EditEvent
+                      eventId={index._id}
+                      id={index.flockId._id}
+                      eggs={index.eggsCollected}
+                      maleMorts={index.maleMorts}
+                      femaleMorts={index.femaleMorts}
+                    />
                   </Td>
                 </Tr>
               ))}

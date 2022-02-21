@@ -148,3 +148,29 @@ export const UPDATE_FLOCK = gql`
     }
   }
 `;
+
+export const UPDATE_EVENT = gql`
+  mutation updateDailyOps(
+    $_id: ID!
+    $flockId: ID!
+    $maleMorts: Int!
+    $femaleMorts: Int!
+    $eggsCollected: Int!
+  ) {
+    updateDailyOps(
+      _id: $_id
+      flockId: $flockId
+      maleMorts: $maleMorts
+      femaleMorts: $femaleMorts
+      eggsCollected: $eggsCollected
+    ) {
+      _id
+      flockId {
+        _id
+      }
+      eggsCollected
+      femaleMorts
+      maleMorts
+    }
+  }
+`;

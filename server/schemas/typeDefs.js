@@ -100,6 +100,14 @@ const typeDefs = gql`
       currentStock: Int!
     ): Flock
 
+    updateDailyOps(
+      flockId: ID!
+      _id: ID!
+      maleMorts: Int!
+      femaleMorts: Int!
+      eggsCollected: Int!
+    ): DailyOps
+
     addLocation(location: String!): Shed
     addBreed(name: String!): Breed
   }

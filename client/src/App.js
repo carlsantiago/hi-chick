@@ -43,12 +43,12 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <ApolloProvider client={client}>
-      <Router>
-        <FarmProvider>
-          <ChakraProvider>
+    <ChakraProvider>
+      <CSSReset />
+      <ApolloProvider client={client}>
+        <Router>
+          <FarmProvider>
             <Flex direction="column" align="center" justify="center">
-              <CSSReset />
               <Flex
                 justify="center"
                 align="center"
@@ -66,10 +66,10 @@ function App() {
                 </Switch>
               </Flex>
             </Flex>
-          </ChakraProvider>
-        </FarmProvider>
-      </Router>
-    </ApolloProvider>
+          </FarmProvider>
+        </Router>
+      </ApolloProvider>
+    </ChakraProvider>
   );
 }
 

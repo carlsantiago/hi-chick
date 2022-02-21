@@ -32,7 +32,7 @@ const resolvers = {
       return Flock.find().populate("shed").populate("breed");
     },
     flock: async (parent, _id) => {
-      return await Flock.findById(_id).populate("shed").populate("breed");
+      return Flock.findById(_id).populate("shed").populate("breed");
     },
     shed: async () => {
       return Shed.find();
@@ -136,6 +136,17 @@ const resolvers = {
       )
         .populate("shed")
         .populate("breed");
+    },
+
+    updateDailyOps: async (
+      parent,
+      { flockId, _id, femaleMorts, maleMorts, eggsCollected }
+    ) => {
+      return await DailyOps.findOneAndUpdate(
+        { _id },
+        { flockId, eggsCollected, maleMorts, femaleMorts },
+        { new: true }
+      );
     },
 
     addLocation: async (parent, { location }) => {
