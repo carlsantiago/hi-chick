@@ -58,9 +58,9 @@ const Events = () => {
                 <Tr key={index._id}>
                   <Td>{moment(index.date).format("DD-MM-YY")}</Td>
                   <Td>{getName(index.flockId._id)}</Td>
-                  <Td>{index.eggsCollected}</Td>
-                  <Td>{index.maleMorts}</Td>
-                  <Td>{index.femaleMorts}</Td>
+                  <Td textAlign="center">{index.eggsCollected}</Td>
+                  <Td textAlign="center">{index.maleMorts}</Td>
+                  <Td textAlign="center">{index.femaleMorts}</Td>
                   <Td>
                     <EditEvent
                       eventId={index._id}

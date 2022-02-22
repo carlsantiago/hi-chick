@@ -35,6 +35,7 @@ const AddBreed = () => {
           },
         });
         onClose();
+        window.location.reload();
       } catch (err) {
         console.error(err);
       }

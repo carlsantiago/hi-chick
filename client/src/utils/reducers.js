@@ -1,18 +1,13 @@
 import { useReducer } from "react";
-import { ADD_EGGS, ADD_MORTS, UPDATE_OVERVIEW } from "./actions";
+import { UPDATE_BREED, UPDATE_LOCATION } from "./actions";
 
 export const reducer = (state, action) => {
   switch (action.type) {
-    case UPDATE_OVERVIEW:
+    case UPDATE_LOCATION:
       return {
         ...state,
       };
-    case ADD_EGGS:
-      return {
-        ...state,
-      };
-
-    case ADD_MORTS:
+    case UPDATE_BREED:
       return {
         ...state,
       };

@@ -14,11 +14,13 @@ import {
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import Auth from "../utils/auth";
 import Moment from "react-moment";
+import { Redirect } from "react-router-dom";
 
 const Header = () => {
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
+    <Redirect to="/" />;
   };
   const now = new Date();
 

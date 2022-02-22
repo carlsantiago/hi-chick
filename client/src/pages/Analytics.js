@@ -22,10 +22,24 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 
+import * as XLSX from "xlsx";
+
 const Analytics = () => {
   const { loading, data } = useQuery(QUERY_FLOCKS);
   const flocks = data?.flocks || [];
   console.log(flocks);
+
+  const saveAs = () => {
+    const workbook = XLSX.utils.book_new();
+    workbook.SheetNames.push("HiChick");
+
+    var ws = workbook.Sheets["Sheet1"];
+    XLSX.utils.sheet_add_aoa(ws, [["Created " + new Date().toISOString()]], {
+      origin: -1,
+    });
+    XLSX.writeFile(workbook, "Report.xlsb");
+  };
+
   if (Auth.loggedIn()) {
     return (
       <>
@@ -74,7 +88,9 @@ const Analytics = () => {
                 </NumberInput>
                 <Text>Week(s)</Text>
               </HStack>
-              <Button colorScheme="yellow">Run Report</Button>
+              <Button colorScheme="yellow" onClick={saveAs}>
+                Run Report
+              </Button>
             </Box>
           </Flex>
         )}

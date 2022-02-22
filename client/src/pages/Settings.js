@@ -24,7 +24,7 @@ const Settings = () => {
       <>
         {!userAuth ? (
           <Stack>
-            <Heading>Unauthorized access</Heading>
+            <Heading>Unauthorised access</Heading>
             <Link href="/">
               <Button colorScheme="yellow">Go Back</Button>
             </Link>

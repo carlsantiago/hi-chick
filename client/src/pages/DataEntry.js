@@ -10,6 +10,7 @@ import Events from "../components/Events";
 import Vaccination from "../components/Vaccination";
 import Weighing from "../components/Weighing";
 import Footer from "../components/Footer";
+import MaintenanceReq from "../components/MaintenanceReq";
 const DataEntry = () => {
   const { loading, data } = useQuery(QUERY_FLOCKS);
 
@@ -31,6 +32,7 @@ const DataEntry = () => {
                   <DailyOps />
                   <Vaccination />
                   <Weighing />
+                  <MaintenanceReq />
                 </VStack>
               </Box>
             </VStack>

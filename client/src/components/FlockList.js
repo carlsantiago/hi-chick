@@ -18,7 +18,7 @@ const FlockList = ({ flocks }) => {
             <Td isNumeric>{flock.currentStock}</Td>
             <Td isNumeric>{flock.femaleCount}</Td>
             <Td isNumeric>{flock.maleCount}</Td>
-            <Td>{flock.vaccinated ? "Yes" : "No"}</Td>
+            <Td textAlign="center">{flock.vaccinated ? "Yes" : "No"}</Td>
             <Td>{flock.status}</Td>
           </Tr>
         ))}
